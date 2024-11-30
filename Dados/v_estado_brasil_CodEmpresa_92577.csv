@@ -1,4 +1,4 @@
-codigo;estado;uf;data_cadastro;ativo;cod_empresa;cod_usuario
+codigo;ESTADO;uf;DATA CADASTRO;ativo;cod_empresa;cod_usuario
 14;Ceará;CE;2012-10-22 11:35:16;1;0;0
 1;Rio Grande do Sul;RS;2012-10-22 11:35:16;1;0;0
 15;Distrito Federal;DF;2012-10-22 11:35:16;1;0;0

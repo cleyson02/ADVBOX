@@ -1,4 +1,4 @@
-codigo;descricao;data_cadastro;ativo;cod_empresa;tipo;migracao;migracao2;migracao3
+codigo;descricao;DATA CADASTRO;ativo;cod_empresa;TIPO DE AÇÃO;migracao;migracao2;migracao3
 100020816;Parceria;09/09/2021 17:18;1;92577;JU;;;
 100013627;Rede Social;28/05/2020 16:23;1;92577;FI;;;
 8938;UFPR;30/09/2012 16:46;1;92577;JU;;;

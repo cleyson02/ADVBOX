@@ -1,4 +1,4 @@
-codigo;data_cadastro;ativo;sigla;descricao;cod_empresa
+codigo;DATA CADASTRO;ativo;sigla;descricao;cod_empresa
 1;2012-06-01 03:10:08;1;SO;Solteiro(a);0
 2;2012-06-01 03:10:15;1;CA;Casado(a);0
 3;2012-06-01 03:10:21;1;DV;Divorciado(a);0

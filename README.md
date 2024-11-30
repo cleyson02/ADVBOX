@@ -1,73 +1,73 @@
-# Sistema de Processamento de Arquivos CSV
+Sistema de Processamento de Arquivos CSV e Planilhas Excel
+Descrição
+Este sistema foi desenvolvido para processar arquivos CSV e inserir dados em planilhas Excel, com o objetivo de organizar, padronizar e consolidar informações de clientes e processos jurídicos. A aplicação permite renomear as colunas dos arquivos CSV de acordo com um mapeamento pré-definido, inserir os dados nas planilhas Excel de clientes e processos, e juntar essas planilhas em um único arquivo Excel.
 
-## Descrição
-Este sistema foi desenvolvido para facilitar a importação e o processamento de arquivos CSV. Ele realiza o mapeamento e a inserção de dados em planilhas Excel (formato `.xlsx`) existentes. Além disso, ele permite combinar dados de duas planilhas distintas (clientes e processos) em um único arquivo.
+Funcionalidades
+1. Renomeação das Colunas em Arquivos CSV
+O sistema renomeia automaticamente as colunas de arquivos CSV para um padrão definido. Isso facilita a padronização dos dados antes de inseri-los em planilhas.
 
-## Funcionalidades
-- **Seleção de pasta:** O usuário pode selecionar uma pasta contendo arquivos CSV.
-- **Processamento de arquivos CSV:** O sistema processa os arquivos CSV e insere as informações nas planilhas Excel preexistentes, com base em um mapeamento de colunas.
-- **Juntar planilhas:** O sistema combina os dados de duas planilhas diferentes (`CLIENTES` e `PROCESSOS`) em uma única planilha de saída, gerando um novo arquivo Excel.
+2. Inserção de Dados nas Planilhas Excel
+Os dados extraídos dos arquivos CSV são inseridos nas planilhas de clientes e processos. O sistema garante que as colunas dos CSVs sejam corretamente mapeadas e associadas às colunas correspondentes nas planilhas de Excel.
 
-## Requisitos
-- Python 3.x
-- Bibliotecas:
-  - `pandas`
-  - `openpyxl`
-  - `tkinter`
-  
-## Instalação
+3. Junção das Planilhas em um Novo Arquivo Excel
+Após o processamento dos arquivos, é possível juntar as planilhas de "CLIENTES" e "PROCESSOS" em um único arquivo Excel. O usuário pode selecionar o caminho e o nome do novo arquivo.
 
-1. Clone o repositório ou baixe o código-fonte.
-2. Instale as dependências necessárias:
+4. Interface Gráfica com Tkinter
+A interface gráfica foi criada com Tkinter, permitindo ao usuário selecionar a pasta contendo os arquivos CSV e visualizar o progresso do processamento.
 
-   ```bash
-   pip install pandas openpyxl
-   ```
+Requisitos
+Python 3.x
+Bibliotecas:
+pandas (para manipulação de dados)
+openpyxl (para trabalhar com arquivos Excel)
+tkinter (para a criação da interface gráfica)
+Como instalar as dependências
+Para rodar o sistema, é necessário instalar as bibliotecas requeridas. Baixe o arquivo requirements.txt deste repositório e instale as dependências com o seguinte comando:
 
-3. Certifique-se de ter o Python 3.x instalado no seu sistema.
+bash
+Copiar código
+pip install -r requirements.txt
+Estrutura do Código
+1. Função renomear_colunas_csv(pasta)
+Renomeia as colunas de todos os arquivos CSV dentro da pasta especificada, de acordo com um mapeamento predefinido.
 
-## Como Usar
+Parâmetros:
 
-### 1. **Seleção da Pasta de Arquivos CSV**
-   - Clique no botão **"Selecionar Pasta"** para escolher a pasta que contém os arquivos CSV a serem processados.
-   
-### 2. **Processamento dos Arquivos CSV**
-   - Após selecionar a pasta, clique no botão **"Processar Arquivos"**. O sistema irá:
-     - Carregar os arquivos CSV da pasta.
-     - Comparar as colunas dos CSV com as colunas nas planilhas Excel `CLIENTES.xlsx` e `PROCESSOS.xlsx`.
-     - Inserir os dados nas colunas correspondentes nas planilhas do Excel.
-     - Salvar as alterações nas planilhas.
+pasta: caminho da pasta que contém os arquivos CSV.
+Funcionamento:
 
-### 3. **Juntar as Planilhas**
-   - Clique no botão **"Juntar Planilhas"** para combinar as planilhas `CLIENTES.xlsx` e `PROCESSOS.xlsx` em um único arquivo Excel.
-   - O sistema irá criar um novo arquivo com os dados das duas planilhas em abas separadas.
+A função percorre todos os arquivos CSV da pasta e renomeia as colunas conforme o mapeamento especificado. O mapeamento inclui nomes de colunas como "nome", "telefone1", "email1", etc., que são renomeadas para um padrão mais adequado.
+2. Função inserir_dados_excel(pasta)
+Insere dados extraídos dos arquivos CSV nas planilhas Excel de clientes e processos.
 
-## Mapeamento de Colunas
+Parâmetros:
 
-O sistema usa o seguinte mapeamento para associar as colunas dos arquivos CSV às colunas das planilhas Excel:
+pasta: caminho da pasta contendo os arquivos CSV.
+Funcionamento:
 
-| Coluna CSV         | Coluna Excel (PROCESSOS)     | Coluna Excel (CLIENTES)   |
-|--------------------|------------------------------|---------------------------|
-| `nome`             | `NOME`                       | `NOME DO CLIENTE`         |
-| `telefone1`        | `TELEFONE`                   | `TELEFONE`                |
-| `email1`           | `EMAIL`                      | `EMAIL`                   |
-| `data_cadastro`    | `DATA CADASTRO`              | -                         |
-| `telefone2`        | `TELEFONE`                   | `TELEFONE`                |
-| `tipo`             | `TIPO DE AÇÃO`               | -                         |
-| `responsavel`      | `RESPONSÁVEL`                | -                         |
-| `cnpj`             | `CPF CNPJ`                   | `CPF CNPJ`                |
-| ...                | ...                          | ...                       |
+Para cada arquivo CSV, a função lê os dados e insere as informações nas planilhas "CLIENTES" e "PROCESSOS" nos arquivos Excel correspondentes. As colunas são verificadas e as informações são inseridas de forma organizada.
+3. Função juntar_planilhas()
+Junta as planilhas de "CLIENTES" e "PROCESSOS" em um novo arquivo Excel.
 
-O sistema mapeia automaticamente as colunas correspondentes entre os arquivos CSV e as planilhas Excel e faz a inserção dos dados nas células apropriadas.
+Funcionamento:
 
-## Exemplo de Uso
-1. Selecione a pasta contendo os arquivos CSV com dados de clientes e processos.
-Clique em **"Processar Arquivos"**. O sistema irá importar os dados dos arquivos CSV e preencher as planilhas PROCESSOS.xlsx e CLIENTES.xlsx. Durante o processo, se ocorrer algum erro, uma mensagem será exibida. Nesse caso, basta clicar em **"OK"** na mensagem de erro e o sistema continuará o processamento até ser concluído.
-3. Para combinar as planilhas em um único arquivo, clique em **"Juntar Planilhas"** e escolha o local onde deseja salvar o novo arquivo.
+O usuário é solicitado a escolher o local onde deseja salvar o novo arquivo. As duas planilhas são então combinadas em um único arquivo Excel com as planilhas "CLIENTES" e "PROCESSOS".
+4. Função main()
+Função principal que cria a interface gráfica para interação do usuário.
 
-## Erros e Mensagens
-- **Erro ao carregar os arquivos Excel:** Caso o sistema não consiga abrir as planilhas `CLIENTES.xlsx` ou `PROCESSOS.xlsx`, uma mensagem de erro será exibida.
-- **Erro ao processar arquivos CSV:** Caso algum arquivo CSV não seja processado corretamente, o sistema exibirá uma mensagem de erro.
+Funcionamento:
 
-## Conclusão
-Este sistema foi desenvolvido para simplificar o processo de integração entre arquivos CSV e planilhas Excel, permitindo uma rápida análise e organização dos dados.
+A interface gráfica é desenvolvida com Tkinter. O usuário pode selecionar a pasta contendo os arquivos CSV, e a aplicação realizará o processamento necessário, renomeando as colunas e inserindo dados nas planilhas.
+O usuário também pode juntar as planilhas de clientes e processos em um único arquivo Excel.
+Como Usar
+Execute o script Python.
+
+A interface gráfica será exibida com os seguintes botões:
+
+Selecionar Pasta e Processar Arquivos: Clique neste botão para selecionar a pasta contendo os arquivos CSV. O sistema irá renomear as colunas e inserir os dados nas planilhas de Excel de clientes e processos.
+Juntar Planilhas: Clique neste botão para juntar as planilhas de "CLIENTES" e "PROCESSOS" em um único arquivo Excel. O sistema pedirá para selecionar o local onde o novo arquivo será salvo.
+Após concluir o processamento, você verá uma mensagem de sucesso ou erro, dependendo do andamento da execução.
+
+Possíveis Erros
+Erro ao processar arquivo CSV: Se um arquivo CSV contiver erros de leitura ou não puder ser processado, o sistema exibirá uma mensagem de erro.
+Erro ao carregar planilha Excel: Se o arquivo Excel de clientes ou processos não puder ser carregado, será exibida uma mensagem de erro.
